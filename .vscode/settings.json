@@ -1,0 +1,4 @@
+// This file is used to configure settings for the Visual Studio Code editor. The "java.project.sourcePaths" setting specifies the source paths for Java projects, indicating that the source code is located in the "src/main/java" directory.
+{
+  "java.project.sourcePaths": ["src/main/java"]
+}
