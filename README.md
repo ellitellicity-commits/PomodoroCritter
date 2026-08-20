@@ -8,8 +8,8 @@
   <img src="https://img.shields.io/badge/Status-In%20Progress-blush?style=flat-square&color=ffb3c6">
 </p>
 
-A pastel Pomodoro companion. A small ninja critter reacts to your focus sessions, sleepy
-when idle, brightening as sessions complete, glowing once momentum builds.
+A pastel Pomodoro companion. A small ninja critter reacts to your focus sessions, sleepy 
+when idle, brightening as sessions complete, glowing once momentum builds!
 
 ## How it works
 
