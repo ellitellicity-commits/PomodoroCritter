@@ -8,8 +8,10 @@
   <img src="https://img.shields.io/badge/Status-In%20Progress-blush?style=flat-square&color=ffb3c6">
 </p>
 
-A pastel Pomodoro companion. A small ninja critter reacts to your focus sessions, sleepy
-when idle, brightening as sessions complete, glowing once momentum builds.
+<p align="center">
+A pastel Pomodoro companion. A small ninja critter reacts to your focus sessions, sleepy 
+when idle, brightening as sessions complete, glowing once momentum builds!
+</p>
 
 ## How it works
 
@@ -76,4 +78,17 @@ PomodoroCritter/
 
 Originally built as a Java Swing desktop app, later rewritten with an HTML/CSS/JS
 frontend served by a lightweight Java backend. The original Swing files are kept in
-the repo, unused, as a record of that first pass.
+the repo, unused, as a record of that first pass. 
+
+## Important Note
+
+Session count, total qualifying minutes, and mood live in the server's memory, not in a
+file or database. That means:
+
+- Closing the browser tab or reopening it doesn't lose anything, the server keeps the
+  state running in the background.
+- Stopping the Java server (closing the terminal it's running in, Ctrl+C, restarting
+  your computer) resets everything back to zero, since nothing's saved to disk.
+
+Keep the server running in the background if you want your stats to keep building
+across a full day of use.
