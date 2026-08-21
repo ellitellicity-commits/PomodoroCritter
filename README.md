@@ -21,7 +21,16 @@ excited state.
 
 | Sleepy | Neutral | Happy | Glowing |
 |---|---|---|---|
-| ![Sleepy](exports/critter-sleepy.png) | ![Neutral](exports/critter-neutral.png) | ![Happy](exports/critter-happy.png) | ![Glowing](exports/critter-glowing.png) |
+| ![Sleepy](exports/critter-sleepy.png) | ![Neutral](exports/critter-neutral.png) | ![Happy](exports/critter-happy.png) | ![Glowing](exports/critter-glowing.png) | 
+
+Mood is also driven by total qualifying minutes, not by how many sessions you've completed:
+
+| Mood | Qualifying minutes |
+|---|---|
+| Sleepy | 0 to 14 |
+| Neutral | 15 to 44 |
+| Happy | 45 to 74 |
+| Glowing | 75+ |
 
 ## Stack
 
