@@ -5,7 +5,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Backend-Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white">
   <img src="https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/Status-In%20Progress-blush?style=flat-square&color=ffb3c6">
+  <img src="https://img.shields.io/badge/Status-Completed-blush?style=flat-square&color=ffb3c6">
 </p>
 
 <p align="center">
