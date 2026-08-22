@@ -34,8 +34,12 @@ public class PomodoroTimer {
         return this.remainingSeconds == 0; // Once seconds hit 00:00! 
     } 
 
-    public int getRemainingSeconds() { 
+    public int getRemainingSeconds() {
         return this.remainingSeconds;
+    }
+
+    public boolean isRunning() {
+        return this.isRunning;
     }
 
     // Part 2: Dynamic Sessions and Reset + Start 

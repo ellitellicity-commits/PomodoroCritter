@@ -30,8 +30,10 @@ public class Main {
             frame.getTimerLabel().setText(String.format("%02d:%02d", minutes, seconds));
 
             if (myPomodoroTimer.isComplete()) {
-                mySessionLog.logSession();
-                myCritter.react(mySessionLog.getCount());
+                if (sessionLengthSeconds >= 900) {
+                    mySessionLog.logSession(sessionLengthSeconds / 60);
+                    myCritter.react(mySessionLog.getCount(), mySessionLog.getTotalMinutes());
+                }
 
                 frame.getMoodLabel().setText("Mood: " + myCritter.getMood());
                 frame.getSessionCountLabel().setText("Sessions: " + mySessionLog.getCount());

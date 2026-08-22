@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+  DIRECTION CONTRACT
+  THESIS: a Pomodoro timer where the reward is a small ninja critter, not a badge or a bar.
+  OWN-WORLD: cream ground, blush-pink accent, four locked pastel mood colors (Critter.java's
+    Mood enum) on a soft rounded ninja-Mii body; bubble-letter type on buttons/labels only,
+    plain legible type on the timer digits themselves.
+  STORY: the visitor picks a session length, starts the timer, watches it count down, and sees
+    the critter's mood step up (SLEEPY -> NEUTRAL -> HAPPY -> GLOWING) as sessions complete.
+  FIRST VIEWPORT: one centered card - critter stage on top, timer readout, mood + session count,
+    Start/Pause/Reset controls, session-length select below.
+  FORM: brief-pinned direction (cream/blush/pastel, ninja-Mii critter, bubble+plain type split),
+    supplied directly by the product owner; no concept-seed roll run, direction was not open.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review,
+    the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Critter</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="animations.css">
+</head>
+<body>
+  <main class="card">
+    <h1 class="app-title">Pomodoro Critter</h1>
+
+    <section class="critter-stage" aria-live="polite">
+      <span class="stage-star stage-star--1" aria-hidden="true"></span>
+      <span class="stage-star stage-star--2" aria-hidden="true"></span>
+      <span class="stage-star stage-star--3" aria-hidden="true"></span>
+      <div class="critter" data-mood="sleepy" role="img" aria-label="Critter is sleepy">
+        <div class="critter-ground-shadow" aria-hidden="true"></div>
+        <div class="critter-bob">
+          <div class="critter-blink">
+            <img class="critter-frame critter-frame--sleepy" src="assets/critter-sleepy.png" alt="">
+            <img class="critter-frame critter-frame--neutral" src="assets/critter-neutral.png" alt="">
+            <img class="critter-frame critter-frame--happy" src="assets/critter-happy.png" alt="">
+            <img class="critter-frame critter-frame--glowing" src="assets/critter-glowing.png" alt="">
+          </div>
+          <div class="critter-blush" aria-hidden="true"></div>
+          <div class="critter-mouth-cover" aria-hidden="true"></div>
+          <div class="critter-mouth" aria-hidden="true"></div>
+        </div>
+        <div class="critter-zzz" aria-hidden="true">
+          <span>z</span><span>Z</span><span>Z</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="mood-label" id="mood-label">Mood: Sleepy</p>
+
+    <p class="timer-readout" id="timer-readout">25:00</p>
+
+    <p class="stats">
+      <span class="session-count" id="session-count">Sessions completed: 0</span>
+      <span class="stats-divider" aria-hidden="true">&middot;</span>
+      <span class="qualifying-minutes" id="qualifying-minutes">Focus minutes: 0</span>
+    </p>
+
+    <div class="dot-accents" aria-hidden="true">
+      <span class="dot-accent"></span>
+      <span class="dot-accent"></span>
+      <span class="dot-accent"></span>
+    </div>
+
+    <div class="controls">
+      <button class="btn btn--start" id="start-btn" type="button">Start</button>
+      <button class="btn btn--pause" id="pause-btn" type="button">Pause</button>
+      <button class="btn btn--reset" id="reset-btn" type="button">Reset</button>
+    </div>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <div class="length-control">
+      <span class="length-label" id="length-label">Session Length</span>
+      <div class="length-stepper" role="group" aria-labelledby="length-label">
+        <button class="stepper-btn stepper-btn--dec" id="length-dec" type="button" aria-label="Decrease session length by 1 minute">&minus;</button>
+        <span class="stepper-value" id="length-value" aria-live="polite">25</span>
+        <button class="stepper-btn stepper-btn--inc" id="length-inc" type="button" aria-label="Increase session length by 1 minute">+</button>
+      </div>
+    </div>
+
+    <p class="length-note" id="length-note">
+      Sessions of 15 minutes or longer count toward your critter's progress. Shorter ones still count down for you. They just won't move the mood needle.
+    </p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

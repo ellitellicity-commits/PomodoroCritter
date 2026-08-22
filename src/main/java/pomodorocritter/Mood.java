@@ -1,27 +1,26 @@
 package pomodorocritter;
 
-// 4 Moods in Check! 
+// 4 Moods in Check!
 public enum Mood {
-    SLEEPY, NEUTRAL, HAPPY, GLOWING; 
+    SLEEPY, NEUTRAL, HAPPY, GLOWING;
 
-    public static Mood fromSessionCount(int completedSessions) { 
-        if (completedSessions == 0) {
+    private static final int NEUTRAL_THRESHOLD_MINUTES = 15;
+    private static final int HAPPY_THRESHOLD_MINUTES = 45;
+    private static final int GLOWING_THRESHOLD_MINUTES = 75;
+
+    public static Mood fromMinutes(int totalMinutes) {
+        if (totalMinutes < NEUTRAL_THRESHOLD_MINUTES) {
             return Mood.SLEEPY;
-        } 
-        else if (completedSessions == 1 || completedSessions == 2) {
+        }
+        else if (totalMinutes < HAPPY_THRESHOLD_MINUTES) {
             return Mood.NEUTRAL;
-        } 
-        else if (completedSessions == 3 || completedSessions == 4) { 
+        }
+        else if (totalMinutes < GLOWING_THRESHOLD_MINUTES) {
             return Mood.HAPPY;
-        } 
-        else { 
+        }
+        else {
             return Mood.GLOWING;
         }
-    } 
-
-    // Temp Main Method 
-    public static void main(String[] args) { 
-        System.out.println(Mood.fromSessionCount(3)); // Should be Happy! 
     }
 }
 
