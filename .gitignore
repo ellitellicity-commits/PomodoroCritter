@@ -1,3 +1,4 @@
 *.class
 /out/
 /.playwright-cli/
+!.claude/settings.json
