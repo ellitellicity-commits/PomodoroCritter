@@ -1,0 +1,157 @@
+/* ==========================================================================
+   PomodoroCritter — Animation Library
+
+   Every @keyframes definition and every animation-triggering rule for the
+   four critter moods (SLEEPY, NEUTRAL, HAPPY, GLOWING) lives here, kept
+   separate from the structural/visual rules in style.css. If it uses the
+   `animation` property or defines a `@keyframes` block, it belongs in this
+   file; plain `transition`s stay with the rules they transition.
+   ========================================================================== */
+
+/* ---- General / shared ---- */
+
+.card {
+  animation: card-intro 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes card-intro {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.timer-readout.tick {
+  animation: timer-tick 260ms ease-out;
+}
+
+@keyframes timer-tick {
+  0% { transform: translateY(-1px); opacity: 0.85; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.mood-label.tick,
+.session-count.tick,
+.qualifying-minutes.tick {
+  animation: state-tick 320ms ease-out;
+}
+
+@keyframes state-tick {
+  0% { opacity: 0.5; transform: translateY(2px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.stage-star {
+  animation: twinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.85; }
+}
+
+/* ---- SLEEPY ----
+   Drifting Zzz text plus a slow mouth pulse (small circle -> larger circle)
+   layered over the baked-in closed-mouth line, like a gentle snoring breath. */
+
+.critter-zzz span {
+  animation: zzz-drift 3.6s ease-in-out infinite;
+}
+
+@keyframes zzz-drift {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.85); }
+  20% { opacity: 0.9; }
+  75% { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(8px, -18px) scale(1.1); }
+}
+
+.critter[data-mood="sleepy"] .critter-mouth {
+  animation: mouth-breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes mouth-breathe {
+  0%, 100% { transform: translateX(-50%) scale(0.7); }
+  50% { transform: translateX(-50%) scale(1.5); }
+}
+
+/* ---- Shared awake blink (NEUTRAL / HAPPY / GLOWING) ----
+   Sleepy's eyes are already closed in the art; blinking only reads as life
+   on the three awake moods, and is the only motion neutral gets. */
+
+.critter:not([data-mood="sleepy"]) .critter-blink {
+  animation: critter-blink 4.5s ease-in-out infinite;
+}
+
+@keyframes critter-blink {
+  0%, 96.9%, 100% { transform: scaleY(1); }
+  98.4% { transform: scaleY(0.12); }
+}
+
+/* ---- Shared ground shadow pulse (HAPPY / GLOWING) ---- */
+
+.critter[data-mood="happy"] .critter-ground-shadow {
+  animation: critter-shadow-pulse 3.6s ease-in-out infinite alternate;
+}
+.critter[data-mood="glowing"] .critter-ground-shadow {
+  animation: critter-shadow-pulse 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes critter-shadow-pulse {
+  from { transform: translateX(-50%) scale(1); }
+  to { transform: translateX(-50%) scale(0.82); }
+}
+
+/* ---- HAPPY ---- */
+
+.critter[data-mood="happy"] .critter-bob {
+  animation: critter-idle-bob 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes critter-idle-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+/* ---- GLOWING ---- */
+
+.critter[data-mood="glowing"] .critter-bob {
+  animation: critter-glow-bob 2.6s ease-in-out infinite alternate;
+}
+.critter[data-mood="glowing"] .critter-frame--glowing {
+  animation: critter-glow-pulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes critter-glow-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+@keyframes critter-glow-pulse {
+  from { filter: drop-shadow(0 0 18px rgba(255, 214, 130, 0.35)); }
+  to { filter: drop-shadow(0 0 32px rgba(255, 214, 130, 0.65)); }
+}
+
+/* ---- Reduced motion ----
+   Every animation-driven rule above gets neutralized here; static-state
+   fallbacks (opacity, transition duration) live alongside their base rules
+   in style.css. Each selector below is qualified to match (or exceed) the
+   specificity of the trigger rule it's canceling — a bare `.critter-bob`
+   here loses to `.critter[data-mood="happy"] .critter-bob` regardless of
+   source order, since specificity beats position in the cascade. */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .critter[data-mood="happy"] .critter-bob,
+  .critter[data-mood="glowing"] .critter-bob,
+  .critter:not([data-mood="sleepy"]) .critter-blink,
+  .critter-zzz span,
+  .critter[data-mood="sleepy"] .critter-mouth,
+  .critter[data-mood="happy"] .critter-ground-shadow,
+  .critter[data-mood="glowing"] .critter-ground-shadow,
+  .critter[data-mood="glowing"] .critter-frame--glowing,
+  .stage-star,
+  .timer-readout.tick,
+  .mood-label.tick,
+  .session-count.tick,
+  .qualifying-minutes.tick {
+    animation: none;
+  }
+}

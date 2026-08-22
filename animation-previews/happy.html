@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Critter Animation Preview — Happy</title>
+<!-- Real production animation rules — not reimplemented here. -->
+<link rel="stylesheet" href="../web/animations.css">
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #fbf1e3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .stage {
+    width: 280px;
+    padding: 12px;
+    background: linear-gradient(180deg, #e6def5 0%, #f4e2dc 55%, #fbe6cc 100%);
+    border-radius: 16px;
+  }
+  .critter {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 320 / 416;
+    margin: 0 auto;
+  }
+  .critter-ground-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    width: 44%;
+    height: 9%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(59, 42, 85, 0.2), rgba(59, 42, 85, 0) 72%);
+    border-radius: 50%;
+  }
+  .critter-bob,
+  .critter-blink {
+    width: 100%;
+    height: 100%;
+  }
+  .critter-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  /* Happy-only overlay: cheek blush, always visible in this preview
+     (production toggles it on with the mood, which is fixed here). */
+  .critter-blush {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+  }
+  .critter-blush::before,
+  .critter-blush::after {
+    content: "";
+    position: absolute;
+    top: 38%;
+    width: 11%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(231, 156, 174, 0.55), rgba(231, 156, 174, 0) 70%);
+  }
+  .critter-blush::before { left: 22%; }
+  .critter-blush::after { right: 22%; }
+  .label {
+    color: #5a4a44;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="critter" data-mood="happy">
+      <div class="critter-ground-shadow"></div>
+      <div class="critter-bob">
+        <div class="critter-blink">
+          <img class="critter-frame" src="../exports/critter-happy.png" alt="Happy critter">
+        </div>
+        <div class="critter-blush"></div>
+      </div>
+    </div>
+  </div>
+  <p class="label">HAPPY — idle bob + blink + ground-shadow pulse</p>
+</body>
+</html>

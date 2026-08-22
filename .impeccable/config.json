@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "animation-previews/sleepy.html"
+        ],
+        "createdAt": "2026-08-22T02:31:50.003Z",
+        "reason": "reuses the app's own documented cream-ground token (#fbf1e3, DESIGN.md) for visual consistency with the production page this previews — not an arbitrary AI-default pick"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "animation-previews/neutral.html"
+        ],
+        "createdAt": "2026-08-22T02:31:50.055Z",
+        "reason": "reuses the app's own documented cream-ground token (#fbf1e3, DESIGN.md) for visual consistency with the production page this previews — not an arbitrary AI-default pick"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "animation-previews/happy.html"
+        ],
+        "createdAt": "2026-08-22T02:31:50.105Z",
+        "reason": "reuses the app's own documented cream-ground token (#fbf1e3, DESIGN.md) for visual consistency with the production page this previews — not an arbitrary AI-default pick"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "animation-previews/glowing.html"
+        ],
+        "createdAt": "2026-08-22T02:31:50.158Z",
+        "reason": "reuses the app's own documented cream-ground token (#fbf1e3, DESIGN.md) for visual consistency with the production page this previews — not an arbitrary AI-default pick"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "animation-previews/sleepy.html"
+        ],
+        "createdAt": "2026-08-22T02:31:50.213Z",
+        "reason": "sizes are the app's real production Zzz-text sizes (0.85/1.15/1.5rem, documented in DESIGN.md) plus the preview's own caption label; this isolated single-motif preview has no large hero element like the full app's 3.4rem timer to create contrast against"
+      }
+    ]
+  }
+}

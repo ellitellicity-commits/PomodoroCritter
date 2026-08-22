@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Critter Animation Preview — Sleepy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+<!-- Real production animation rules — not reimplemented here. -->
+<link rel="stylesheet" href="../web/animations.css">
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #fbf1e3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .stage {
+    width: 280px;
+    padding: 12px;
+    background: linear-gradient(180deg, #e6def5 0%, #f4e2dc 55%, #fbe6cc 100%);
+    border-radius: 16px;
+  }
+  .critter {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 320 / 416;
+    margin: 0 auto;
+  }
+  .critter-ground-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    width: 44%;
+    height: 9%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(59, 42, 85, 0.2), rgba(59, 42, 85, 0) 72%);
+    border-radius: 50%;
+  }
+  .critter-bob,
+  .critter-blink {
+    width: 100%;
+    height: 100%;
+  }
+  .critter-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  /* Sleepy-only overlays: mouth pulse + drifting Zzz. Positioning here
+     matches web/style.css exactly; the motion comes from animations.css. */
+  .critter-mouth-cover {
+    position: absolute;
+    left: 47.8%;
+    top: 42.3%;
+    width: 11%;
+    height: 3.6%;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    background: #ffe0c4;
+  }
+  .critter-mouth {
+    position: absolute;
+    left: 47.8%;
+    top: 42%;
+    width: 7%;
+    aspect-ratio: 1;
+    transform: translateX(-50%);
+    transform-origin: 50% 0%;
+    border-radius: 50%;
+    background: #3b2a55;
+  }
+  .critter-zzz {
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    width: 46%;
+    height: 46%;
+  }
+  .critter-zzz span {
+    position: absolute;
+    font-family: 'Titan One', cursive;
+    font-weight: 400;
+    color: #a6a4d4;
+    -webkit-text-stroke: 1px #3b2a55;
+    opacity: 0;
+  }
+  .critter-zzz span:nth-child(1) { left: 4%; bottom: 6%; font-size: 0.85rem; animation-delay: 0s; }
+  .critter-zzz span:nth-child(2) { left: 30%; bottom: 24%; font-size: 1.15rem; animation-delay: 1.1s; }
+  .critter-zzz span:nth-child(3) { left: 54%; bottom: 44%; font-size: 1.5rem; animation-delay: 2.2s; }
+  .label {
+    color: #5a4a44;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="critter" data-mood="sleepy">
+      <div class="critter-ground-shadow"></div>
+      <div class="critter-bob">
+        <div class="critter-blink">
+          <img class="critter-frame" src="../exports/critter-sleepy.png" alt="Sleepy critter">
+        </div>
+        <div class="critter-mouth"></div>
+      </div>
+      <div class="critter-zzz">
+        <span>z</span><span>Z</span><span>Z</span>
+      </div>
+    </div>
+  </div>
+  <p class="label">SLEEPY — mouth pulse (small &harr; large circle) + drifting Zzz</p>
+</body>
+</html>
